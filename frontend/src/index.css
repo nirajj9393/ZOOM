@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Story+Script&display=swap');
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+   background-image: url('/BG.jpg');
+   background-size: cover;       
+   background-repeat: no-repeat;
+}
+.nav_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 30px;
+  background: rgba(20, 20, 40, 0.3); /* transparent blur overlay */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height:9vh;
+}
+.nav_bar img {
+  width: 150px;    
+}
+.nav_bar .nav_links{
+  display: flex;
+  gap:20px;
+
+}
+.nav_bar .nav_links a{
+  text-decoration: none;
+}
+.nav_bar .nav_links div a{
+  color: rgb(212, 226, 239);
+}
+.nav_bar .nav_links div a:hover{
+   color: rgb(148, 70, 211);
+}
+.lp_main_content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 50px;
+  padding: 120px 30px;
+  
+}
+.lp_main_content .right img {
+  width: 100%;        /* change this to resize the image (e.g., 60%, 400px, etc.) */
+  max-width: 600px;  /* prevents too large on big screens */
+  height: auto;      /* keeps proportions */
+  display: block;
+}
+.lp_main_content .left :nth-child(1){
+ color: rgb(220, 194, 247);
+ font-size: 80px;
+ font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+
+
+}
+.lp_main_content .left {
+  margin-left:50px;
+  display: flex;
+  flex-direction: column;
+}
+.lp_main_content .left :nth-child(1) span{
+  color:rgb(9, 8, 11);
+  font-family: "Ephesis", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+.lp_main_content .left :nth-child(2){
+ color: rgb(0, 0, 0);
+ font-size: 35px;
+  font-family: "Story Script", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+
+}
+.lp_main_content .left :nth-child(3){
+ color: rgb(215, 208, 208);
+ font-size: 30px;
+ margin-top:30px;
+ background-color: #561676;
+ width:fit-content;
+ padding:10px;
+ border-radius: 10px;
+}
+.lp_main_content .left :nth-child(3):hover{
+  cursor: pointer;
+}
+.lp_main_content .left :nth-child(3):active{
+  cursor: pointer;
+ color: #561676;
+ background-color:black ;
+}
