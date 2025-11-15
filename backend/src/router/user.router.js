@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { login, register } from "../controller/user.controller.js";
-
+import { login, register, logout } from "../controller/user.controller.js";
+import { protect } from "../middleware/protect.js";
 const router = Router();
 
 router.post("/login", login);
 router.post("/register", register);
+router.post("/logout",protect,  logout);
+
 router.post("/add_to_activity", (req, res) => {
   res.send("Add activity route - not implemented yet");
 });
@@ -12,4 +14,5 @@ router.post("/add_to_activity", (req, res) => {
 router.get("/get_all_activity", (req, res) => {
   res.send("Get all activities route - not implemented yet");
 });
+
 export default router;

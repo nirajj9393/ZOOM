@@ -1,13 +1,15 @@
-
+import '../pages/LandingPage.css'
+import { NavLink } from 'react-router-dom'
 function LandingPage() {
   return (
     <>
       <nav className="nav_bar">
                 <div><img src="logo.png" alt="app logo" /></div>
                 <div className="nav_links">
-                    <div><a href="">JOIN AS A GUEST</a></div>
-                    <div><a href="">LOGIN</a></div>
-                    <div><a href="">REGISTER</a></div>
+                    <div><NavLink >JOIN AS A GUEST</NavLink></div>
+                    <div><NavLink to="/login">LOGIN</NavLink></div>
+                    <div><NavLink to="/register">REGISTER</NavLink></div>
+
                 </div>
       </nav>
       <div className="lp_main_content">
