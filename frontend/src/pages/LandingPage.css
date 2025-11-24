@@ -23,9 +23,18 @@ body{
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   height:9vh;
 }
-.nav_bar img {
-  width: 150px;    
+
+
+#img-div a{
+ text-decoration: none;
+ color: rgb(226, 207, 248);
+ font-size: 35px;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
 }
+
+
 .nav_bar .nav_links{
   display: flex;
   gap:20px;
@@ -40,6 +49,19 @@ body{
 .nav_bar .nav_links div a:hover{
    color: rgb(148, 70, 211);
 }
+.logout_btn {
+  background: transparent;
+  border: none;
+  color:rgb(212, 226, 239);
+  font-size: 14px;
+ 
+  cursor: pointer;
+}
+
+.logout_btn:hover {
+  color: #9245de;   /* same hover effect as Home */
+}
+
 .lp_main_content{
   display: flex;
   justify-content: space-between;

@@ -1,0 +1,206 @@
+
+
+.chat-display{
+    margin-left:10%;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height:85vh;
+    background: rgba(255, 255, 255, 0.07); /* transparent so blur is visible */
+    backdrop-filter: blur(30px);          /* blur amount */
+    width:80%;
+    overflow-y: scroll;
+    border-radius: 25px;
+      scrollbar-width: none; 
+
+}
+.chat-msg{
+    padding: 120px;
+    color: rgb(255, 255, 255);
+    width: 100%;
+}
+.msg-send{
+    width:80%;
+    height:40px;
+    display: flex;
+    margin-bottom: 5px;
+     position: sticky;
+     bottom: 0;
+     z-index: 10;
+}
+.msg-send input{
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+     background: rgba(255, 255, 255, 0.1); /* transparent so blur is visible */
+    backdrop-filter: blur(30px);
+    padding-left: 10px;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+}
+.send-icon{
+ font-size: 30px;
+ align-self: center;
+ margin-left:10px;
+ color: rgb(0, 0, 0);
+ border-radius: 50%;
+ background: rgba(255, 255, 255, 0); /* transparent so blur is visible */
+ backdrop-filter: blur(10px); 
+ border: 1px solid rgba(0, 0, 0, 0.397);
+ padding: 8px;
+ cursor: pointer;
+}
+.send-icon:hover{
+    background-color: rgba(114, 112, 112, 0.423);
+    border: 1px solid rgb(149, 149, 149);
+}
+
+/* ----------- MESSAGE WRAPPER ----------- */
+.my-msg, .other-msg {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Align my messages to right */
+.my-msg {
+  align-items: flex-end;
+}
+
+/* Align other messages to left */
+.other-msg {
+  align-items: flex-start;
+}
+
+/* ----------- MESSAGE BUBBLE ----------- */
+.msg-text {
+  max-width: 60%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 22px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(25px);
+
+  color: white;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* My message color (more purple tone) */
+.my-msg .msg-text {
+  background: rgba(155, 98, 230, 0.35);
+  border-radius: 18px 18px 4px 18px;
+}
+
+/* Other message color (more gray tone) */
+.other-msg .msg-text {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 18px 18px 18px 4px;
+}
+
+/* ----------- TIME TAG ----------- */
+.msg-time {
+  font-size: 12px;
+  opacity: 0.8;
+  color: rgb(210, 190, 230);
+  margin-top: 4px;
+}
+
+/* My time alignment */
+.my-msg .msg-time {
+  padding-right: 12px;
+}
+
+/* Other user time alignment */
+.other-msg .msg-time {
+  padding-left: 12px;
+}
+.sender-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d7c5ff;
+  margin-bottom: 4px;
+}
+/* ===== JOIN SCREEN MAIN WRAPPER ===== */
+.join-wrapper {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+}
+
+/* ===== JOIN FORM BOX ===== */
+.join-container {
+  width: 380px;
+  padding: 35px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(35px);
+
+  box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===== INPUTS ===== */
+.join-container input {
+  width: 100%;
+  padding: 14px 15px;
+
+  border: none;
+  outline: none;
+  border-radius: 12px;
+
+  font-size: 16px;
+  color: white;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+}
+
+.join-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== JOIN BUTTON ===== */
+.join-container button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+
+  background: linear-gradient(135deg, #9f5cf8, #7b3ff2);
+
+  transition: 0.2s ease;
+}
+
+.join-container button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

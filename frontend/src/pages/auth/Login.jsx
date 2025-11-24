@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/authSlice";
 import "../auth/auth.css";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();   // 👈 Added navigation
   const { loading, error } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
@@ -24,7 +25,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(formData));
+
+    dispatch(loginUser(formData)).then((res) => {
+      if (res.type === "auth/login/fulfilled") {
+        navigate("/home");   
+      }
+    });
   };
 
   return (

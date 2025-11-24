@@ -5,7 +5,7 @@ const router = Router();
 
 router.post("/login", login);
 router.post("/register", register);
-router.post("/logout",protect,  logout);
+router.post("/logout",logout);
 
 router.post("/add_to_activity", (req, res) => {
   res.send("Add activity route - not implemented yet");

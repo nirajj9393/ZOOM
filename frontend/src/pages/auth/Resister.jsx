@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/authSlice.js";
 import "../auth/auth.css";
 
 const Resister = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();  
   const { loading, error } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
@@ -17,15 +18,20 @@ const Resister = () => {
   const { name, username, password } = formData;
 
   const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.value 
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(formData));
+
+    dispatch(registerUser(formData)).then((res) => {
+      if (res.type === "auth/register/fulfilled") {
+        navigate("/login");   
+      }
+    });
   };
 
   return (
@@ -36,34 +42,34 @@ const Resister = () => {
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Name</label>
-            <input 
+            <input
               type="text"
               name="name"
               value={name}
               onChange={handleChange}
-              placeholder="Enter your name" 
+              placeholder="Enter your name"
             />
           </div>
 
           <div className="input-group">
             <label>Username</label>
-            <input 
+            <input
               type="text"
               name="username"
               value={username}
               onChange={handleChange}
-              placeholder="Enter username" 
+              placeholder="Enter username"
             />
           </div>
 
           <div className="input-group">
             <label>Password</label>
-            <input 
+            <input
               type="password"
               name="password"
               value={password}
               onChange={handleChange}
-              placeholder="Enter password" 
+              placeholder="Enter password"
             />
           </div>
 
@@ -76,7 +82,9 @@ const Resister = () => {
 
         <p className="auth-footer">
           Already have an account?{" "}
-          <Link to="/login" className="auth-link">Login</Link>
+          <Link to="/login" className="auth-link">
+            Login
+          </Link>
         </p>
       </div>
     </div>
