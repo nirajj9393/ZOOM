@@ -25,7 +25,7 @@ body{
 }
 
 
-#img-div a{
+.img_div a{
  text-decoration: none;
  color: rgb(226, 207, 248);
  font-size: 35px;

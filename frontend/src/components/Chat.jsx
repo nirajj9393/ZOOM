@@ -1,13 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import "./Chat.css";
+import styles from "./Chat.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-import { io } from "socket.io-client";
 
-
-const socket = io("http://localhost:8000", {
-  transports: ["websocket"],
-});
+import { socket } from "../socket/socket";
 
 function Chat() {
   const [whileTyping, setWhileTyping] = useState("");
@@ -17,7 +13,6 @@ function Chat() {
   const [joined, setJoined] = useState(false);
 
   const bottomRef = useRef(null);
-
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,7 +35,6 @@ function Chat() {
     setJoined(true);
   };
 
- 
   const sendMsg = () => {
     if (whileTyping.trim() === "") return;
 
@@ -59,56 +53,55 @@ function Chat() {
     setWhileTyping("");
   };
 
+  if (!joined) {
+    return (
+      <div className={styles["join-wrapper"]}>
+        <div className={styles["join-container"]}>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-if (!joined) {
-  return (
-    <div className="join-wrapper">
-      <div className="join-container">
-        <input
-          type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Enter room name"
+            value={room}
+            onChange={(e) => setRoom(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="Enter room name"
-          value={room}
-          onChange={(e) => setRoom(e.target.value)}
-        />
-
-        <button onClick={joinRoom}>Join Chat</button>
+          <button onClick={joinRoom}>Join Chat</button>
+        </div>
       </div>
-    </div>
-  );
-}
-
+    );
+  }
 
   return (
-    <div className="chat-display">
-    
-      <div className="chat-msg">
+    <div className={styles["chat-display"]}>
+      <div className={styles["chat-msg"]}>
         {messages.map((m, index) => (
           <div
             key={index}
-            className={m.senderId === socket.id ? "my-msg" : "other-msg"}
+            className={
+              m.senderId === socket.id
+                ? styles["my-msg"]
+                : styles["other-msg"]
+            }
           >
-            <div className="sender-name">
+            <div className={styles["sender-name"]}>
               {m.senderId === socket.id ? "You" : m.senderName}
             </div>
 
-            <div className="msg-text">{m.text}</div>
-            <div className="msg-time">{m.time}</div>
+            <div className={styles["msg-text"]}>{m.text}</div>
+            <div className={styles["msg-time"]}>{m.time}</div>
           </div>
         ))}
 
-     
         <div ref={bottomRef}></div>
       </div>
 
-   
-      <div className="msg-send">
+      <div className={styles["msg-send"]}>
         <input
           type="text"
           value={whileTyping}
@@ -119,7 +112,7 @@ if (!joined) {
 
         <FontAwesomeIcon
           icon={faPaperPlane}
-          className="send-icon"
+          className={styles["send-icon"]}
           onClick={sendMsg}
         />
       </div>

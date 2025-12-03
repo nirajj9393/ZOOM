@@ -1,4 +1,4 @@
-import '../pages/LandingPage.css'
+import styles from '../pages/LandingPage.module.css'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../redux/authSlice'
@@ -14,22 +14,22 @@ function Nav() {
   };
 
   return (
-    <nav className="nav_bar">
-      <div id = "img-div">
-        <Link to="/">
-          ZOOMIFY
-        </Link>
+    <nav className={styles.nav_bar}>
+      <div className={styles.img_div}>
+        <Link to="/"> ZOOMIFY </Link>
       </div>
 
-      <div className="nav_links">
-         {!user ?
-         (<div><NavLink>JOIN AS A GUEST</NavLink></div>):
-         (  <div><NavLink to ="/home">Home</NavLink></div>)
-        }
+      <div className={styles.nav_links}>
+        {!user ? (
+          <div><NavLink to="/guest">JOIN AS A GUEST</NavLink></div>
+        ) : (
+          <div><NavLink to="/home">Home</NavLink></div>
+        )}
+
         {user ? (
           <div>
             <button 
-              className="logout_btn"
+              className={styles.logout_btn}
               onClick={handleLogout}
             >
               Logout
